@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'colorfield',
-    'easyapps.cms',
-    'easyapps.labels',
+    'cms',
+    'labels',
 ]
 
 MIDDLEWARE = [

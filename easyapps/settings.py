@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-%#8%pt(2f1=n!wroq$qf2^cf8a)moo&z+emr(7iwif^+qojq*f
 DEBUG = True
 AUTH_USER_MODEL = "crm.Contact"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 

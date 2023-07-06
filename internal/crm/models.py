@@ -88,31 +88,30 @@ class Visit(BaseModel):
     contact = models.ForeignKey(Contact, on_delete=models.PROTECT, null=True)
     anonymousID = models.UUIDField(blank=True, null=True)
     fingerprint = models.CharField(max_length=255, blank=True, null=True)
-    is_mobile
-    is_tablet
-    is_touch_capable
-    is_pc
-    is_bot
-    browser_family
-    browser_version
-    os_family
-    os_version
-    device_family
-    user_agent
-    ip_address
-    city
-    'continent_code': 'NA',
-    'continent_name': 'North America',
-    'country_code': 'US',
-    'country_name': 'United States',
-    'dma_code': 807,pipenv
-    'is_in_european_union': False,
-    'latitude': 37.419200897216797,
-    'longitude': -122.05740356445312,
-    'postal_code': '94043',
-    'region': 'CA',
-    'time_zone': 'America/Los_Angeles'}
-
+    # is_mobile
+    # is_tablet
+    # is_touch_capable
+    # is_pc
+    # is_bot
+    # browser_family
+    # browser_version
+    # os_family
+    # os_version
+    # device_family
+    # user_agent
+    # ip_address
+    # city
+    # continent_code
+    # continent_name
+    # country_code
+    # country_name
+    # dma_code
+    # is_in_european_union
+    # latitude
+    # longitude
+    # postal_code
+    # region
+    # time_zone
 
     class Meta:
         indexes = [

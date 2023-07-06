@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+import dj_database_url
+
 SITE_ID = 1
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -99,8 +101,10 @@ WSGI_APPLICATION = "easyapps.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+database_url = os.environ["DATABASE_URL"]
+
 DATABASES = {
-    "default": os.environ["DATABASE_URL"]
+    "default": dj_database_url.config()
     #     "ENGINE": "django.db.backends.postgresql",
     #     "NAME": "easyapps",
     #     # 'USER': 'myprojectuser',

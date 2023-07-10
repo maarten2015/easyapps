@@ -41,6 +41,8 @@ jobs:
         python-version: 3.11
     - name: Black
       uses: psf/black@stable
+      with:
+        options: "--exclude ^.*\b(migrations)\b.*$"
     - name: isort 
       uses: isort/isort-action@master
     - name: flake8

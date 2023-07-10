@@ -36,7 +36,7 @@ amqp = "==5.1.1"
 babel = "==2.12.1"
 beautifulsoup4 = "==4.11.1"
 billiard = "==3.6.4.0"
-celery = "==5.2.7"
+celery = "*"
 certifi = "==2022.12.7"
 cffi = "==1.15.1"
 click-didyoumean = "==0.3.0"
@@ -79,6 +79,7 @@ wcwidth = "==0.2.6"
 gunicorn = "*"
 dj-database-url = "*"
 whitenoise = "*"
+sentry-sdk = {version = "*", extras = ["django"]}
 
 [dev-packages]
 

@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+import sentry_sdk
 
 SITE_ID = 1
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -156,3 +157,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+sentry_sdk.init(
+    dsn="https://48a1ec13a2554c47b64cf07e36c14196@o4505499843493888.ingest.sentry.io/4505499844935680",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production,
+    traces_sample_rate=1.0,
+)

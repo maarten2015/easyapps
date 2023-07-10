@@ -1,13 +1,31 @@
 name: Django CI
 
+env:
+  DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/easyapps
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
+
+
 jobs:
   build:
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: easyapps
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
 
     runs-on: ubuntu-latest
 #    strategy:

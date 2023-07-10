@@ -1,2 +1,2 @@
 web: gunicorn easyapps.wsgi
-postdeploy: postdeploy.sh
+postdeploy: ./postdeploy.sh

@@ -45,4 +45,5 @@ jobs:
       run: pipenv install --dev
     - name: Run Tests
       run: |
+        pipenv run python manage.py migrate
         pipenv run python manage.py test

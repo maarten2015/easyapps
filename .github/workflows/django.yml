@@ -1,0 +1,62 @@
+name: Django CI
+
+env:
+  DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/easyapps
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+
+jobs:
+  build:
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: easyapps
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+
+    runs-on: ubuntu-latest
+#    strategy:
+#      max-parallel: 4
+#      matrix:
+#        python-version: [3.11]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.11
+    - name: Black
+      uses: psf/black@stable
+      with:
+        options: "--check --exclude (migrations)"
+    - name: isort 
+      uses: isort/isort-action@master
+    - name: flake8
+      uses: py-actions/flake8@v2
+    - name: Install pipenv
+      run: pip install pipenv
+    - name: Install Dependencies
+      run: pipenv install --dev
+    - name: Code quality checks
+      run: |
+        isort --check-only .
+        black --check .
+        flake8
+    - name: Run Migration & Tests
+      run: |
+        pipenv run python manage.py migrate
+        pipenv run python manage.py test

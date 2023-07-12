@@ -6,7 +6,6 @@ class Command(BaseCommand):
     help = "Closes the specified poll for voting"
 
     def handle(self, *args, **options):
-
         with MailBox("pro1.mail.ovh.net").login(
             "support@ideeenbox.nl", "ktq.XFE6wpn1duc!bvk"
         ) as mailbox:

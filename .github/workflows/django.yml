@@ -42,7 +42,7 @@ jobs:
     - name: Black
       uses: psf/black@stable
       with:
-        options: "--exclude ^.*\b(migrations)\b.*$"
+        options: "--check --exclude (migrations)"
     - name: isort 
       uses: isort/isort-action@master
     - name: flake8

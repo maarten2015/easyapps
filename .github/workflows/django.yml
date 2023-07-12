@@ -42,11 +42,17 @@ jobs:
     - name: Black
       uses: psf/black@stable
       with:
-        options: "--check --diff --exclude (migrations)"
+        options: "--check --diff --extend-exclude (migrations)"
     - name: isort 
       uses: isort/isort-action@master
+      with:
+        configuration: "--check-only --diff --profile black --extend-skip migrations"
     - name: flake8
       uses: py-actions/flake8@v2
+      with:
+          exclude: "migrations/"
+          max-line-length: "88"
+
     - name: Install pipenv
       run: pip install pipenv
     - name: Install Dependencies

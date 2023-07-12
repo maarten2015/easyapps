@@ -17,7 +17,7 @@ django-colorfield = "==0.8.0"
 flake8 = "==6.0.0"
 frozenlist = "==1.3.3"
 idna = "==3.4"
-isort = "==5.11.4"
+isort = "*"
 mccabe = "==0.7.0"
 multidict = "==6.0.4"
 mypy-extensions = "==0.4.3"
@@ -81,6 +81,7 @@ dj-database-url = "*"
 whitenoise = "*"
 sentry-sdk = {version = "*", extras = ["django"]}
 packaging = "*"
+pre-commit = "*"
 
 [dev-packages]
 

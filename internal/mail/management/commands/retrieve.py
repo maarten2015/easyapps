@@ -19,7 +19,7 @@ class Command(BaseCommand):
                 print(msg.reply_to)  # tuple: ('reply_to@mail.ru', )
                 print(
                     msg.date
-                )  # datetime.datetime: 1900-1-1 for unparsed, may be naive or with tzinfo
+                )  # datetime.datetime: 1900-1-1 for unparsed, may be naive or with tz
                 print(
                     msg.date_str
                 )  # str: original date - 'Tue, 03 Jan 2017 22:26:59 +0500'
@@ -28,10 +28,8 @@ class Command(BaseCommand):
                 print(msg.flags)  # tuple: ('\\Seen', '\\Flagged', 'ENCRYPTED')
                 print(
                     msg.headers
-                )  # dict: {'received': ('from 1.m.ru', 'from 2.m.ru'), 'anti-virus': ('Clean',)}
-                print(
-                    msg.size_rfc822
-                )  # int: 20664 bytes - size info from server (*useful with headers_only arg)
+                )  # dict: {'received': ('from 1.m.ru', 'from 2.m.ru'),}
+                print(msg.size_rfc822)  # int: 20664 bytes - size info from server
                 print(msg.size)  # int: 20377 bytes - size of received message
 
                 for att in msg.attachments:  # list: imap_tools.MailAttachment

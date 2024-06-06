@@ -53,11 +53,11 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "assetmanager",
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        # For each OAuth based provider, either add a ``SocialApp``
+    "google": {  # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         "APP": {"client_id": "123", "secret": "456", "key": ""}
@@ -74,6 +74,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
@@ -106,17 +107,7 @@ WSGI_APPLICATION = "easyapps.wsgi.application"
 
 database_url = os.environ["DATABASE_URL"]
 
-DATABASES = {
-    "default": dj_database_url.config()
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "easyapps",
-    #     # 'USER': 'myprojectuser',
-    #     # 'PASSWORD': 'password',
-    #     "HOST": "localhost",
-    #     # 'ENGINE': 'django.db.backends.sqlite3',
-    #     # 'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-}
+DATABASES = {"default": dj_database_url.config()}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -170,4 +161,5 @@ sentry_sdk.init(
     # of transactions for performance monitoring.
     # We recommend adjusting this value in production,
     traces_sample_rate=1.0,
+    environment="local",
 )
